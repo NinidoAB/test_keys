@@ -1,4 +1,4 @@
-ivariables:
+variables:
   vmImageName: 'ubuntu-latest'
 
 trigger:
