@@ -25,7 +25,7 @@ stages:
             git -C /tmp clone https://github.com/trufflesecurity/trufflehog.git && cd /tmp/trufflehog && go install  
           displayName: 'Trufflehog Setup'
         
-        - bash: rm -rf $(System.DefaultWorkingDirectory)/trufflehog
+        - bash: pwd 
           displayName: 'Remove Trufflehog directory'
           name: 'RemoveTrufflehogdir'
 
