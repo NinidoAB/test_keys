@@ -1,0 +1,34 @@
+ivariables:
+  vmImageName: 'ubuntu-latest'
+
+trigger:
+  branches:
+    include:
+    - trufflehog-test
+  paths:
+    include:
+    - Pipeline/trufflehog-secret-test.yml
+
+stages:
+  - stage: trufflehog
+    displayName: trufflehog_secret_scan
+    jobs:
+    - job: trufflehog
+      pool:
+        vmImage: $(vmImageName)
+      steps: 
+        - script: |
+            sudo apt update && sudo apt-get install snapd -y && sudo snap install --classic --stable go  && go version
+          displayName: 'Go Package Installation'
+        
+        - script: 
+            git -C /tmp clone https://github.com/trufflesecurity/trufflehog.git && cd /tmp/trufflehog && go install  
+          displayName: 'Trufflehog Setup'
+        
+        - bash: rm -rf $(System.DefaultWorkingDirectory)/trufflehog
+          displayName: 'Remove Trufflehog directory'
+          name: 'RemoveTrufflehogdir'
+
+        - script: 
+            ~/go/bin/trufflehog --debug --fail git file://$(System.DefaultWorkingDirectory)
+          displayName: 'Trufflehog Secret Scan'
