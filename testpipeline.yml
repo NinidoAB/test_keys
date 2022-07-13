@@ -30,5 +30,5 @@ stages:
           name: 'RemoveTrufflehogdir'
 
         - script: 
-            ~/go/bin/trufflehog --debug --fail git file://$(System.DefaultWorkingDirectory)
+            ~/go/bin/trufflehog --fail git file://$(System.DefaultWorkingDirectory)
           displayName: 'Trufflehog Secret Scan'
