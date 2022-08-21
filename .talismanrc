@@ -3,4 +3,8 @@ fileignoreconfig:
   checksum: b0ca1dadde2542d53a4c9f8c04e142908f446e5696b9cb3f3c871d5069377c89
 - filename: file
   checksum: 34190f7f37518cb8bf75b4f597c1f6572f0e9e1b92dffca687af75d7b51e6f97
+- filename: cert.pem
+  checksum: ab9fe2103da356f185d8a65eb93853c8fada7ed256396eef51c343a55e650ac5
+- filename: key.pem
+  checksum: 43a89a96406d603a90208c8b011dfa1504ec9878997d407fb6f2c5329c620995
 version: ""
